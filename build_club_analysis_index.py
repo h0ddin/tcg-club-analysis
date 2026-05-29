@@ -64,7 +64,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     }}
 
     body {{
-      padding: 20px;
+      padding: clamp(12px, 2vw, 20px);
     }}
 
     .app {{
@@ -82,7 +82,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     }}
 
     .topbar {{
-      padding: 18px 20px;
+      padding: clamp(14px, 2vw, 20px);
       display: grid;
       gap: 12px;
     }}
@@ -112,6 +112,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       gap: 10px;
       overflow: auto;
       padding-bottom: 4px;
+      -webkit-overflow-scrolling: touch;
+      scroll-padding-inline: 8px;
     }}
 
     .club-button {{
@@ -178,6 +180,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     .viewer-subtitle {{
       color: var(--muted);
       font-size: 14px;
+      overflow-wrap: anywhere;
     }}
 
     .viewer-actions {{
@@ -198,16 +201,12 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     iframe {{
       width: 100%;
       height: 100%;
-      min-height: 78vh;
+      min-height: 78dvh;
       border: 0;
       background: #ffffff;
     }}
 
     @media (max-width: 960px) {{
-      body {{
-        padding: 12px;
-      }}
-
       .viewer-shell {{
         min-height: 80vh;
       }}
@@ -215,6 +214,75 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       .viewer-header {{
         flex-direction: column;
         align-items: flex-start;
+        padding: 16px 18px;
+      }}
+
+      .viewer-header h2 {{
+        font-size: 21px;
+      }}
+
+      .viewer-actions {{
+        width: 100%;
+      }}
+
+      .viewer-actions a {{
+        flex: 1 1 220px;
+        text-align: center;
+      }}
+    }}
+
+    @media (max-width: 720px) {{
+      .app {{
+        gap: 14px;
+      }}
+
+      .club-list {{
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        overflow: visible;
+      }}
+
+      .club-button {{
+        min-width: 0;
+        padding: 12px;
+      }}
+
+      .viewer-shell {{
+        min-height: 0;
+      }}
+
+      iframe {{
+        min-height: 72dvh;
+      }}
+    }}
+
+    @media (max-width: 520px) {{
+      .topbar {{
+        gap: 10px;
+      }}
+
+      .club-list {{
+        grid-template-columns: 1fr;
+      }}
+
+      .search {{
+        padding: 11px 12px;
+      }}
+
+      .viewer-header {{
+        padding: 14px;
+      }}
+
+      .viewer-header h2 {{
+        font-size: 19px;
+      }}
+
+      .viewer-subtitle {{
+        font-size: 13px;
+      }}
+
+      .viewer-actions a {{
+        padding: 10px 12px;
       }}
     }}
   </style>

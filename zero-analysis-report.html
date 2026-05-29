@@ -128,7 +128,7 @@
       background: rgba(255,255,255,0.02);
     }
     .metric-block--players {
-      min-width: 180px;
+      min-width: min(180px, 100%);
       max-width: 220px;
       text-align: center;
     }
@@ -197,6 +197,7 @@
       overflow: auto;
       border: 1px solid var(--line);
       border-radius: 18px;
+      -webkit-overflow-scrolling: touch;
     }
     .data-table {
       width: 100%;
@@ -282,6 +283,7 @@
     .muted {
       color: var(--muted);
       line-height: 1.7;
+      overflow-wrap: anywhere;
     }
     .result-chip {
       min-width: 260px;
@@ -451,13 +453,42 @@
       .formation-header { flex-direction: column; align-items: stretch; }
       .formation-scoreline { justify-content: flex-start; margin-left: 0; }
       .score-chip { min-width: 0; flex: 1 1 120px; }
+      .data-table { min-width: 680px; }
+      .data-table.compact { min-width: 560px; }
     }
     @media (max-width: 560px) {
+      .shell { width: min(100vw - 12px, 100%); padding: 10px 0 36px; }
       .headline { font-size: 24px; }
       .hero-stats { grid-template-columns: 1fr; }
       .best-strip { grid-template-columns: 1fr; }
       .metric-block strong { font-size: 20px; }
       .quick-links { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .panel { padding: 14px; }
+      .panel h2 { font-size: 21px; margin-bottom: 14px; }
+      .player-head h2 { font-size: 24px; }
+      .result-chip { padding: 14px; }
+      .best-strip strong { font-size: 22px; }
+      .formation-grid { padding: 12px; gap: 12px; }
+      .formation-card { padding: 14px; }
+      .formation-topline { font-size: 22px; }
+      .formation-card h4 { font-size: 18px; }
+      .details-panel summary { padding: 14px; font-size: 12px; }
+      .data-table { min-width: 600px; font-size: 13px; }
+      .data-table.compact { min-width: 480px; }
+      .data-table th,
+      .data-table td { padding: 10px 10px; }
+      .score-chip em { font-size: 20px; }
+    }
+    @media (max-width: 420px) {
+      .quick-links { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .eyebrow,
+      .metric-block .label,
+      .best-strip .label,
+      .subs-label,
+      .section-kicker,
+      .quick-nav .label { letter-spacing: 0.12em; }
+      .data-table { min-width: 540px; }
+      .data-table.compact { min-width: 430px; }
     }
   </style>
 </head>
@@ -498,7 +529,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td>001-oizysxdd</td><td>20</td><td>Neutral 1</td><td class=''>24</td><td class='value-good'>636</td><td>+234.5</td><td>870.5</td></tr><tr><td>002-patatjeuhh_</td><td>20</td><td>Neutral 1</td><td class='value-good'>25</td><td class='value-good'>636</td><td>+234.0</td><td>870.0</td></tr><tr><td>003-radiator27</td><td>20</td><td>Neutral 1</td><td class=''>-</td><td class='value-good'>636</td><td>+234.0</td><td>870.0</td></tr><tr><td>004-tea_si</td><td>20</td><td>Neutral 1</td><td class='value-good'>25</td><td class='value-good'>636</td><td>+234.5</td><td>870.5</td></tr><tr><td>005-crimsonfresno</td><td>30</td><td>Neutral 1</td><td class='value-good'>25</td><td class='value-good'>636</td><td>+234.0</td><td>870.0</td></tr><tr><td>006-foxface_194</td><td>11</td><td>Neutral 2</td><td class=''>17</td><td class=''>635</td><td>+234.0</td><td>869.0</td></tr><tr><td>007-loseoneslunch</td><td>20</td><td>Neutral 1</td><td class='value-good'>25</td><td class='value-good'>636</td><td>+234.5</td><td>870.5</td></tr><tr><td>008-_jwayne_</td><td>30</td><td>Neutral 1</td><td class='value-good'>25</td><td class='value-good'>636</td><td>+234.5</td><td>870.5</td></tr><tr><td>009-haqryuu</td><td>30</td><td>Neutral 1</td><td class=''>20</td><td class='value-good'>636</td><td>+234.5</td><td>870.5</td></tr>
+              <tr><td>001-oizysxdd</td><td>20</td><td>Neutral 1</td><td class=''>24</td><td class='value-good'>636</td><td>+234.5</td><td>870.5</td></tr><tr><td>002-patatjeuhh_</td><td>20</td><td>Neutral 1</td><td class='value-good'>25</td><td class='value-good'>636</td><td>+234.0</td><td>870.0</td></tr><tr><td>003-radiator27</td><td>20</td><td>Neutral 1</td><td class=''>23</td><td class='value-good'>636</td><td>+234.0</td><td>870.0</td></tr><tr><td>004-tea_si</td><td>20</td><td>Neutral 1</td><td class='value-good'>25</td><td class='value-good'>636</td><td>+234.5</td><td>870.5</td></tr><tr><td>005-crimsonfresno</td><td>30</td><td>Neutral 1</td><td class='value-good'>25</td><td class='value-good'>636</td><td>+234.0</td><td>870.0</td></tr><tr><td>006-foxface_194</td><td>11</td><td>Neutral 2</td><td class=''>17</td><td class=''>635</td><td>+234.0</td><td>869.0</td></tr><tr><td>007-loseoneslunch</td><td>20</td><td>Neutral 1</td><td class='value-good'>25</td><td class='value-good'>636</td><td>+234.5</td><td>870.5</td></tr><tr><td>008-_jwayne_</td><td>30</td><td>Neutral 1</td><td class='value-good'>25</td><td class='value-good'>636</td><td>+234.5</td><td>870.5</td></tr><tr><td>009-haqryuu</td><td>30</td><td>Neutral 1</td><td class=''>20</td><td class='value-good'>636</td><td>+234.5</td><td>870.5</td></tr>
             </tbody>
           </table>
         </div>
